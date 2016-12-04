@@ -66,7 +66,30 @@ class CliqueGenerator():
             for i in edges:
                 print(str(i))
 
+class PosetGenerator():
 
+    def __init__(self, size = 10, height = 5, width = 5):
+        self.size = size
+        self.height = height
+        self.width = width
+
+    def generate(self, file=None):
+        nodes = []
+        edges = set()
+        for i in range(self.size):
+            node = int(random.random() * self.size)
+            nodes.append(node)
+            edges.add((node, node))
+        for i in range(len(nodes)):
+            for j in range(i, len(nodes)):
+                a = nodes[i]
+                b = nodes[j]
+                if (a < b):
+                    edges.add((a, b))
+                elif (a > b):
+                    edges.add((b, a))
+        print(nodes)
+        print(edges)
 
 
 
