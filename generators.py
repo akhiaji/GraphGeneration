@@ -95,9 +95,11 @@ class PosetGenerator():
                 elif (a > b):
                     edges.add((b, a))
         if file is not None:
-            for e in edges:
-                file.write(str(i))
-            file.close()
+        	file = open(file, 'w')
+        	for e in edges:
+        		x, y = e
+        		file.write("%d %d\n" % (x, y))
+        	file.close()
         else:
             print(nodes)
             print(edges)
