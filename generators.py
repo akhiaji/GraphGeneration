@@ -16,7 +16,7 @@ class RandomGenerator():
         if file is not None:
             file = open(file, 'w')
             for i in edges:
-                file.write(i)
+                file.write(str(i[0]) + " " + str(i[1]) + "\n")
             file.close()
 
 
@@ -66,7 +66,7 @@ class CliqueGenerator():
         if file is not None:
             file = open(file, 'w')
             for i in edges:
-                file.write(str(i[0]) + ", " + str(i[1]) + "\n")
+                file.write(str(i[0]) + " " + str(i[1]) + "\n")
             file.close()
         else:
             for i in edges:
@@ -95,8 +95,9 @@ class PosetGenerator():
                 elif (a > b):
                     edges.add((b, a))
         if file is not None:
+            file = open(file, 'w')
             for e in edges:
-                file.write(str(i))
+                file.write(str(i[0]) + " " + str(i[1]) + "\n")
             file.close()
         else:
             print(nodes)
@@ -129,7 +130,7 @@ class IntervalGenerator():
         if file is not None:
             file = open(file, 'w')
             for i in edges:
-                file.write(str(i[0]) + ", " + str(i[1]) + "\n")
+                file.write(str(i[0]) + " " + str(i[1]) + "\n")
             file.close()
         else:
             for i in edges:
