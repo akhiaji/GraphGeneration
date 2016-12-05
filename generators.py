@@ -16,6 +16,7 @@ class RandomGenerator():
         if file is not None:
             for i in edges:
                 file.write(i)
+            file.close()
 
 
 class ColoredGenerator():
@@ -34,6 +35,7 @@ class ColoredGenerator():
         if file is not None:
             for i in edges:
                 file.write(str(i))
+            file.close()
 
 class CliqueGenerator():
     def __init__(self, size = 100, density=0.5, cliqueSize=5):
@@ -62,6 +64,7 @@ class CliqueGenerator():
         if file is not None:
             for i in edges:
                 file.write(str(i))
+            file.close()
         else:
             for i in edges:
                 print(str(i))
@@ -88,8 +91,15 @@ class PosetGenerator():
                     edges.add((a, b))
                 elif (a > b):
                     edges.add((b, a))
-        print(nodes)
-        print(edges)
+        if file is not None:
+            for e in edges:
+                file.write(str(i))
+            file.close()
+        else:
+            print(nodes)
+            print(edges)
+
+       
 
 
 
