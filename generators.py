@@ -2,7 +2,7 @@ import random
 
 class RandomGenerator():
 
-    def __init__(self, size=100, density=025):
+    def __init__(self, size=100, density=0.25):
         self.size = size
         self.density = density
 
@@ -101,6 +101,41 @@ class PosetGenerator():
         else:
             print(nodes)
             print(edges)
+
+class IntervalGenerator():
+    def __init__(self, size=10, density=0.5):
+        self.size = size
+        self.density = density
+
+    def generate(self, file=None):
+        intervals = []
+        edges = set()
+        for i in range(self.size):
+            intervals.append(i)
+            intervals.append(i)
+        for i in range(self.size):
+            for j in range(len(intervals) - 1):
+                if random.random() < self.density:
+                    temp = intervals[j]
+                    intervals[j] = intervals[j + 1]
+                    intervals[j + 1] = temp
+        for i in range(self.size):
+            curr = intervals.index(i) + 1
+            while intervals[curr] != i:
+                if intervals[curr] > i:
+                    edges.add((i, intervals[curr]))
+                curr += 1
+        random.shuffle(list(edges))
+        if file is not None:
+            file = open(file, 'w')
+            for i in edges:
+                file.write(str(i[0]) + ", " + str(i[1]) + "\n")
+            file.close()
+        else:
+            for i in edges:
+                print(str(i))
+
+
 
        
 
