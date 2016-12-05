@@ -1,7 +1,7 @@
 import random
 
-class RandomGenerator():
 
+class RandomGenerator():
     def __init__(self, size=100, density=0.25):
         self.size = size
         self.density = density
@@ -21,7 +21,7 @@ class RandomGenerator():
 
 
 class ColoredGenerator():
-    def __init__(self, size = 100, density=0.2, colors=5):
+    def __init__(self, size=100, density=0.2, colors=5):
         self.size = size
         self.density = density
         self.colors = colors
@@ -30,7 +30,7 @@ class ColoredGenerator():
         edges = []
         for i in range(self.size):
             for j in range(i, self.size):
-                if i%self.colors != j%self.colors and random.random() <= self.density:
+                if i % self.colors != j % self.colors and random.random() <= self.density:
                     edges.append((i, j))
         random.shuffle(edges)
         if file is not None:
@@ -39,8 +39,9 @@ class ColoredGenerator():
                 file.write(str(i))
             file.close()
 
+
 class CliqueGenerator():
-    def __init__(self, size = 100, density=0.2, cliqueSize=5):
+    def __init__(self, size=100, density=0.2, cliqueSize=5):
         self.size = size
         self.density = density
         self.cliqueSize = cliqueSize
@@ -60,7 +61,7 @@ class CliqueGenerator():
                     edges.add((i, j))
         for i in range(self.size):
             for j in range(i, self.size):
-                if i%self.cliqueSize != j%self.cliqueSize and random.random() <= self.density:
+                if i % self.cliqueSize != j % self.cliqueSize and random.random() <= self.density:
                     edges.add((i, j))
         random.shuffle(list(edges))
         if file is not None:
@@ -72,9 +73,9 @@ class CliqueGenerator():
             for i in edges:
                 print(str(i))
 
-class PosetGenerator():
 
-    def __init__(self, size = 10, height = 5, width = 5):
+class PosetGenerator():
+    def __init__(self, size=10, height=5, width=5):
         self.size = size
         self.height = height
         self.width = width
@@ -97,11 +98,13 @@ class PosetGenerator():
         if file is not None:
             file = open(file, 'w')
             for e in edges:
-                file.write(str(i[0]) + " " + str(i[1]) + "\n")
+                x, y = e
+                file.write("%d %d\n" % (x, y))
             file.close()
         else:
             print(nodes)
             print(edges)
+
 
 class IntervalGenerator():
     def __init__(self, size=10, density=0.5):
@@ -135,15 +138,3 @@ class IntervalGenerator():
         else:
             for i in edges:
                 print(str(i))
-
-
-
-       
-
-
-
-
-
-
-
-
