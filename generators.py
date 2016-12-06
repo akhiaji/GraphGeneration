@@ -36,7 +36,7 @@ class ColoredGenerator():
         if file is not None:
             file = open(file, 'w')
             for i in edges:
-                file.write(str(i))
+                file.write(str(i[0]) + " " + str(i[1]) + "\n")
             file.close()
 
 
